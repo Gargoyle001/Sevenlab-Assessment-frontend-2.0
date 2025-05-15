@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
+const router = useRouter()
 const loading = ref(false)
 const email = ref('')
 const password = ref('')
@@ -19,6 +21,7 @@ async function handleSubmit() {
       alert('Check your email for the confirmation link!')
     } else {
       await userStore.signIn(email.value, password.value)
+      router.push('/')
     }
   } catch (e: any) {
     error.value = e.message
