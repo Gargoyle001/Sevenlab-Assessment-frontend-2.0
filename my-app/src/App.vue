@@ -1,21 +1,44 @@
-<script setup>
-import { ref, onMounted } from 'vue'
-import { supabase } from './lib/supabaseClient'
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import { onMounted } from 'vue'
+import { useUserStore } from '@/stores/user'
 
-const instruments = ref([])
+const userStore = useUserStore()
 
-async function getInstruments() {
-  const { data } = await supabase.from('instruments').select()
-  instruments.value = data
-}
-
-onMounted(() => {
-   getInstruments()
+onMounted(async () => {
+  await userStore.fetchUser()
 })
 </script>
 
 <template>
-  <ul>
-    <li v-for="instrument in instruments" :key="instrument.id">{{ instrument.name }}</li>
-  </ul>
+  <RouterView v-slot="{ Component }">
+    <Suspense>
+      <component :is="Component" />
+      <template #fallback>
+        <div class="loading">
+          Loading...
+        </div>
+      </template>
+    </Suspense>
+  </RouterView>
 </template>
+
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+</style>
