@@ -76,84 +76,87 @@ async function handleSubmit() {
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+$primary: #00dc82;
+$primary-light: #a8e5ce;
+$danger: #dc2626;
+$danger-bg: #fee2e2;
+$gray: #2c3e50;
+
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 1rem;
-}
 
-.auth-form {
-  width: 100%;
-  max-width: 400px;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background: white;
-}
+  .auth-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: white;
 
-h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #2c3e50;
-}
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: $gray;
+    }
 
-.form-group {
-  margin-bottom: 1rem;
-}
+    .form-group {
+      margin-bottom: 1rem;
 
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #2c3e50;
-}
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: $gray;
+      }
 
-input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
+      input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+    }
 
-button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #00dc82;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 1rem;
-}
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: $primary;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      &:disabled {
+        background-color: $primary-light;
+        cursor: not-allowed;
+      }
+    }
 
-button:disabled {
-  background-color: #a8e5ce;
-  cursor: not-allowed;
-}
+    .error-message {
+      color: $danger;
+      background-color: $danger-bg;
+      padding: 0.75rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
 
-.error-message {
-  color: #dc2626;
-  background-color: #fee2e2;
-  padding: 0.75rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
-
-.toggle-auth {
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.toggle-auth a {
-  color: #00dc82;
-  text-decoration: none;
-}
-
-.toggle-auth a:hover {
-  text-decoration: underline;
+    .toggle-auth {
+      text-align: center;
+      margin-top: 1rem;
+      a {
+        color: $primary;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 </style> 

@@ -158,153 +158,149 @@ async function handleSubmit() {
   </div>
 </template>
 
-<style scoped>
-.contact {
-  padding: 4rem 2rem;
-  min-height: calc(100vh - 300px);
-}
+<style lang="scss" scoped>
+$primary: #00ff88;
+$secondary: #00ffff;
+$white: #fff;
+$dark-bg: rgba(255, 255, 255, 0.05);
+$border-color: rgba(255, 255, 255, 0.1);
 
-.contact-content {
+.contact {
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.contact-info {
-  color: #ffffff;
-}
-
-h1 {
-  font-size: 3rem;
-  color: #00ff88;
-  margin-bottom: 1rem;
-  font-family: 'Orbitron', sans-serif;
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 3rem;
-  color: #ffffff;
-  opacity: 0.8;
-}
-
-.social-links {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  color: #ffffff;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.social-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px var(--glow-color);
-  border-color: var(--glow-color);
-}
-
-.social-link i {
-  font-size: 1.5rem;
-  color: var(--glow-color);
-}
-
-.contact-form {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-}
-
-input,
-textarea {
-  width: 100%;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-  color: #ffffff;
-  transition: all 0.3s ease;
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: #00ff88;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 1rem;
-  background: linear-gradient(45deg, #00ff88, #00ffff);
-  border: none;
-  border-radius: 5px;
-  color: #000;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.submit-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-}
-
-.submit-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.error-message {
-  color: #ff4444;
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background: rgba(255, 68, 68, 0.1);
-  border-radius: 5px;
-}
-
-.success-message {
-  color: #00ff88;
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background: rgba(0, 255, 136, 0.1);
-  border-radius: 5px;
-}
-
-@media (max-width: 768px) {
-  .contact-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .social-links {
-    grid-template-columns: 1fr;
-  }
 
   h1 {
     font-size: 2.5rem;
+    color: $primary;
+    margin-bottom: 1rem;
+  }
+
+  .subtitle {
+    color: $white;
+    margin-bottom: 3rem;
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: $dark-bg;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateX(10px);
+        }
+
+        .icon {
+          font-size: 1.5rem;
+        }
+
+        .link-info {
+          h3 {
+            color: $white;
+            margin-bottom: 0.25rem;
+          }
+
+          p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    .contact-form {
+      background: $dark-bg;
+      padding: 2rem;
+      border-radius: 10px;
+      border: 1px solid $border-color;
+
+      .form-group {
+        margin-bottom: 1.5rem;
+
+        label {
+          display: block;
+          color: $white;
+          margin-bottom: 0.5rem;
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 0.75rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid $border-color;
+          border-radius: 5px;
+          color: $white;
+
+          &:focus {
+            outline: none;
+            border-color: $primary;
+          }
+        }
+
+        textarea {
+          min-height: 150px;
+          resize: vertical;
+        }
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(45deg, $primary, $secondary);
+        border: none;
+        border-radius: 5px;
+        color: #000;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  .error-message {
+    color: #ff4444;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .success-message {
+    color: $primary;
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
   }
 }
 </style> 

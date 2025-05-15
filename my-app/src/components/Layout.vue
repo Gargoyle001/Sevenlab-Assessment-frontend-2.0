@@ -92,126 +92,124 @@ function startBuzzwordRotation() {
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+$primary: #00ff88;
+$secondary: #00ffff;
+$dark: #18181b;
+$white: #fff;
+
 .app-container {
   min-height: 100vh;
-  background-color: #0a0a0a;
-  color: #ffffff;
-  font-family: 'Inter', sans-serif;
-}
+  background: $dark;
+  color: $white;
 
-.main-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(15, 15, 15, 0.95);
-  backdrop-filter: blur(10px);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
-  color: #00ff88;
-  text-decoration: none;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-}
-
-.nav-links a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #00ff88;
-}
-
-.nav-actions {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.auth-btn {
-  padding: 0.5rem 1.5rem;
-  background: linear-gradient(45deg, #00ff88, #00ffff);
-  border: none;
-  border-radius: 25px;
-  color: #000;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.auth-btn:hover {
-  transform: translateY(-2px);
-}
-
-.cart-icon {
-  color: #ffffff;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-main {
-  padding-top: 80px;
-  min-height: calc(100vh - 300px);
-}
-
-.main-footer {
-  background: rgba(15, 15, 15, 0.95);
-  padding: 3rem 2rem 1rem;
-  margin-top: 4rem;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-section h3 {
-  color: #00ff88;
-  margin-bottom: 1rem;
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-links a {
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-  color: #00ff88;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  .main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: rgba(15, 15, 15, 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: $primary;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      a {
+        color: $white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      .cart-icon {
+        color: $white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .auth-btn {
+        padding: 0.5rem 1.5rem;
+        background: linear-gradient(45deg, $primary, $secondary);
+        border: none;
+        border-radius: 25px;
+        color: #000;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+      .sign-out-btn {
+        background: none;
+        border: none;
+        color: $white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.2s;
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+  main {
+    padding-top: 80px;
+    min-height: calc(100vh - 300px);
+  }
+  .main-footer {
+    background: rgba(15, 15, 15, 0.95);
+    padding: 3rem 2rem 1rem;
+    margin-top: 4rem;
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      .footer-section {
+        h3 {
+          color: $primary;
+          margin-bottom: 1rem;
+        }
+      }
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        a {
+          color: $white;
+          text-decoration: none;
+          transition: color 0.3s ease;
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  }
 }
 </style> 

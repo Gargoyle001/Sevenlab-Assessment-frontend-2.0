@@ -119,79 +119,155 @@ async function signOut() {
   </div>
 </template>
 
-<style scoped>
-.account-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 1rem;
-}
+<style lang="scss" scoped>
+$primary: #00ff88;
+$secondary: #00ffff;
+$white: #fff;
+$dark-bg: rgba(255, 255, 255, 0.05);
+$border-color: rgba(255, 255, 255, 0.1);
 
-.account-form {
-  width: 100%;
-  max-width: 400px;
+.account {
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background: white;
+  max-width: 800px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 2.5rem;
+    color: $primary;
+    margin-bottom: 2rem;
+  }
+
+  .account-content {
+    background: $dark-bg;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid $border-color;
+
+    .user-info {
+      margin-bottom: 2rem;
+
+      h2 {
+        color: $white;
+        margin-bottom: 1rem;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+
+        .info-item {
+          background: rgba(255, 255, 255, 0.05);
+          padding: 1rem;
+          border-radius: 10px;
+          border: 1px solid $border-color;
+
+          .label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .value {
+            color: $white;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .orders-section {
+      h2 {
+        color: $white;
+        margin-bottom: 1rem;
+      }
+
+      .order-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .order-card {
+          background: rgba(255, 255, 255, 0.05);
+          padding: 1.5rem;
+          border-radius: 10px;
+          border: 1px solid $border-color;
+
+          .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            .order-id {
+              color: $primary;
+              font-weight: 600;
+            }
+
+            .order-date {
+              color: rgba(255, 255, 255, 0.7);
+              font-size: 0.9rem;
+            }
+          }
+
+          .order-items {
+            margin-bottom: 1rem;
+
+            .item {
+              display: flex;
+              justify-content: space-between;
+              padding: 0.5rem 0;
+              border-bottom: 1px solid $border-color;
+
+              &:last-child {
+                border-bottom: none;
+              }
+
+              .item-name {
+                color: $white;
+              }
+
+              .item-price {
+                color: $secondary;
+              }
+            }
+          }
+
+          .order-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid $border-color;
+
+            .total-label {
+              color: $white;
+              font-weight: 600;
+            }
+
+            .total-amount {
+              color: $primary;
+              font-size: 1.2rem;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #2c3e50;
-}
+@media (max-width: 768px) {
+  .account {
+    padding: 1rem;
 
-.form-group {
-  margin-bottom: 1rem;
-}
+    h1 {
+      font-size: 2rem;
+    }
 
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #2c3e50;
-}
-
-input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-input:disabled {
-  background-color: #f3f4f6;
-}
-
-.button-group {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-button {
-  flex: 1;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-button[type="submit"] {
-  background-color: #00dc82;
-  color: white;
-}
-
-.button-secondary {
-  background-color: #ef4444;
-  color: white;
-}
-
-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
+    .account-content {
+      padding: 1rem;
+    }
+  }
 }
 </style> 
