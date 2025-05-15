@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "supabase": "^2.22.12"
+  },
+  "devDependencies": {
+    "sass": "^1.88.0"
   }
 }
